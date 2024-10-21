@@ -14,7 +14,7 @@ COPY . .
 RUN chmod +x mvnw
 
 # Build the application using Maven, skipping tests
-RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests && ls target
 
 # Run the application
 CMD ["java", "-jar", "target/task-manager-0.0.1-SNAPSHOT.jar"]
