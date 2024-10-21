@@ -10,10 +10,11 @@ COPY . .
 # Set executable permissions for mvnw (if you decide to keep using it)
 RUN chmod +x mvnw
 
+
 # Build the application using Maven, skipping tests
-RUN ./mvnw clean package -DskipTests
+# RUN ./mvnw clean package -DskipTests
 
 # Alternatively, if you decide to use Maven directly, use this line instead:
-# RUN mvn clean package -DskipTests
+RUN mvn clean package -DskipTests
 # Run the application
 CMD ["java", "-jar", "target/ask-manager 0.0.1-SNAPSHOT.jar"]
