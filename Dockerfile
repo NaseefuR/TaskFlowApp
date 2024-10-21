@@ -17,4 +17,4 @@ RUN chmod +x mvnw
 RUN mvn clean package -DskipTests && ls target
 
 # Run the application
-CMD ["java", "-jar", "target/task-manager-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar","target/task-0.0.1-SNAPSHOT.jar"]
