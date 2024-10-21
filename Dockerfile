@@ -15,6 +15,7 @@ RUN chmod +x mvnw
 # RUN ./mvnw clean package -DskipTests
 
 # Alternatively, if you decide to use Maven directly, use this line instead:
-RUN mvn clean package -DskipTests
+RUN mvn clean
+RUN mvn test
 # Run the application
 CMD ["java", "-jar", "target/ask-manager 0.0.1-SNAPSHOT.jar"]
