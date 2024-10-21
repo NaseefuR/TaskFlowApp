@@ -1,9 +1,5 @@
 # Use an official Java runtime as a parent image
-# Use an official Java runtime as a parent image
 FROM openjdk:21-jdk-slim
-
-# Install Maven
-RUN apt-get update && apt-get install -y maven
 
 # Set the working directory in the container
 WORKDIR /app
@@ -11,8 +7,13 @@ WORKDIR /app
 # Copy the current directory contents into the container at /app
 COPY . .
 
-# Build the application using Maven
-RUN mvn clean package
+# Set executable permissions for mvnw (if you decide to keep using it)
+RUN chmod +x mvnw
 
+# Build the application using Maven, skipping tests
+RUN ./mvnw clean package -DskipTests
+
+# Alternatively, if you decide to use Maven directly, use this line instead:
+# RUN mvn clean package -DskipTests
 # Run the application
 CMD ["java", "-jar", "target/task-manager.jar"]
