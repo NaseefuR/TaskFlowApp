@@ -16,4 +16,4 @@ RUN ./mvnw clean package -DskipTests
 # Alternatively, if you decide to use Maven directly, use this line instead:
 # RUN mvn clean package -DskipTests
 # Run the application
-CMD ["java", "-jar", "target/task-manager.jar"]
+CMD ["java", "-jar", "target/ask-manager 0.0.1-SNAPSHOT.jar"]
