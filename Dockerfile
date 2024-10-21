@@ -10,9 +10,6 @@ COPY . .
 # Build the application using Maven, skipping tests
 RUN mvn clean package -DskipTests
 
-# List the contents of the target directory for verification
-RUN ls -l target
-
 # Use an official Java runtime as a parent image for the final image
 FROM openjdk:21-jdk-slim
 
@@ -20,7 +17,7 @@ FROM openjdk:21-jdk-slim
 WORKDIR /app
 
 # Copy the built JAR file from the previous build stage
-COPY --from=build /app/target/ask-manager-0.0.1-SNAPSHOT.jar .
+COPY --from=build /app/target/task-manager-0.0.1-SNAPSHOT.jar .
 
 # Run the application
-CMD ["java", "-jar", "ask-manager-0.0.1-SNAPSHOT.jar"]
+CMD ["java", "-jar", "task-manager-0.0.1-SNAPSHOT.jar"]
