@@ -1,32 +1,14 @@
-# Use an official Maven image to build the project
-FROM maven:3.8.4-openjdk-21 AS build
-
-# Set the working directory inside the container
-WORKDIR /app
-
-# Copy the pom.xml to download dependencies
-COPY pom.xml .
-
-# Download the dependencies first
-RUN mvn dependency:go-offline -B
-
-# Copy the project files into the container
-COPY src ./src
-
-# Package the application (skipping tests for now)
-RUN mvn clean package -DskipTests
-
-# Use a slim JDK image to run the Spring Boot app
+# Use an official Java runtime as a parent image
 FROM openjdk:21-jdk-slim
 
-# Set the working directory inside the container
+# Set the working directory in the container
 WORKDIR /app
 
-# Copy the jar file from the build stage to the final image
-COPY --from=build /app/target/task-0.0.1-SNAPSHOT.jar /app/task-manager.jar
+# Copy the current directory contents into the container at /app
+COPY . .
 
-# Expose the default Spring Boot port
-EXPOSE 8080
+# Build the application using Maven (if applicable)
+RUN ./mvnw clean package
 
-# Command to run the Spring Boot application
-ENTRYPOINT ["java", "-jar", "/app/task-manager.jar"]
+# Run the application
+CMD ["java", "-jar", "target/task-manager.jar"]
