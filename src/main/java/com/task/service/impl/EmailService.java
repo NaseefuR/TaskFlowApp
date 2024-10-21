@@ -44,7 +44,7 @@ public class EmailService {
                 "<li>Track your progress with ease</li>" +
                 "</ul>" +
                 "<p>To get started, simply log in to your account and explore all the features that TaskFlow has to offer!</p>" +
-                "<a href='[Your Login URL]' class='button'>Get Started</a>" +
+                "<a href='https://task-flowapp.netlify.app/login' class='button'>Get Started</a>" +
                 "<div class='footer'>" +
                 "Best Regards,<br>Your TaskFlow Team<br>" +
                 "<a href='mailto:support@taskflow.com'>support@taskflow.com</a>" +
